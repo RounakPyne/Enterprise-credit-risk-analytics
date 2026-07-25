@@ -1,0 +1,315 @@
+Business Problem
+
+Enterprise Credit Risk & Portfolio Monitoring System
+
+A financial institution has observed:
+
+Rising customer defaults
+Increasing delinquency rates
+Growing fraud incidents
+Higher collection costs
+Uncertainty regarding future portfolio risk
+
+Management wants answers to five key questions:
+
+1. Which customers are most likely to default?
+
+The company currently reacts after customers miss payments.
+
+They want to proactively identify risky customers before default occurs.
+
+2. What factors drive default risk?
+
+Questions such as:
+
+Does high credit utilization increase risk?
+Does payment behavior matter?
+Does fraud history influence default?
+3. Which customer segments are riskiest?
+
+Examples:
+
+Young customers vs older customers
+Salaried vs self-employed
+High-income vs low-income
+4. How effective is collections recovery?
+
+Questions:
+
+Are collection efforts working?
+Which delinquency buckets recover best?
+Where is money being lost?
+5. What will happen in the future?
+
+Management wants:
+
+Default forecasts
+Delinquency forecasts
+Recovery forecasts
+
+so they can allocate resources properly.
+
+How This Is Done In The Real World
+
+A typical project at a bank or consulting firm follows this flow:
+
+Phase 1: Data Collection
+
+Data comes from multiple systems:
+
+Source	Table
+CRM	customer_master
+Credit System	account_master
+Core Banking	transactions
+Collections Tool	collections_activity
+Fraud System	fraud_alerts
+Economic Data	macroeconomic_indicators
+
+This is exactly why you have multiple files.
+
+Phase 2: Data Warehouse
+
+Load all files into PostgreSQL.
+
+Create relationships:
+
+customer_master
+      |
+account_master
+      |
+transactions
+
+account_master
+      |
+monthly_snapshot
+
+account_master
+      |
+collections
+
+account_master
+      |
+fraud
+
+This mimics a real data warehouse.
+
+Phase 3: SQL Analytics
+Portfolio KPIs
+
+Calculate:
+
+Total Accounts
+Total Exposure
+Delinquency Rate
+Default Rate
+Fraud Rate
+Risk Segmentation
+
+Create:
+
+Risk Level	Rule
+Low	Score < 30
+Medium	30-60
+High	> 60
+Customer Analysis
+
+Questions:
+
+Which city has highest default?
+Which occupation has highest risk?
+Which age group defaults most?
+Collections Analysis
+
+Questions:
+
+Recovery by bucket
+Recovery by month
+Collection effectiveness
+Fraud Analysis
+
+Questions:
+
+Most common fraud type
+Fraud trends
+Phase 4: Python EDA
+
+Use:
+
+pandas
+numpy
+matplotlib
+seaborn
+
+Analyze:
+
+Customer Profile
+Age distribution
+Income distribution
+Risk Profile
+DPD distribution
+Utilization distribution
+Correlation Analysis
+
+Look for:
+
+Utilization vs Default
+DPD vs Default
+Fraud vs Default
+Phase 5: Feature Engineering
+
+This is what real data scientists do.
+
+Create:
+
+Credit Utilization
+Balance / Credit Limit
+Payment Ratio
+Payment / Outstanding
+Fraud Count
+
+Number of fraud alerts
+
+Collection Success Rate
+Recovered / Outstanding
+Account Age
+Current Date - Open Date
+Phase 6: Predictive Modeling
+
+This is your strongest section.
+
+Objective
+
+Predict:
+
+default_flag
+
+Use:
+
+Utilization Ratio
+DPD
+Fraud Count
+Payment Ratio
+Income
+Account Age
+
+Model:
+
+LogisticRegression
+
+Why?
+
+Because risk teams love interpretable models.
+
+Interviewers often ask:
+
+Why Logistic Regression instead of Random Forest?
+
+Answer:
+
+Easy to explain
+Regulatory friendly
+Widely used in banking
+Produces probability scores
+Phase 7: Model Evaluation
+
+Show:
+
+Confusion Matrix
+TP
+TN
+FP
+FN
+Metrics
+Accuracy
+Precision
+Recall
+F1 Score
+ROC-AUC
+
+Target:
+
+ROC-AUC above 0.75
+Phase 8: Time Series Forecasting
+
+Use:
+
+Monthly Default Rate
+
+Forecast:
+
+Next 6 months
+Monthly Recovery Amount
+
+Forecast:
+
+Future collections
+Delinquency Trend
+
+Forecast:
+
+Future risk exposure
+
+Models:
+
+ARIMA
+Prophet (optional)
+Phase 9: Power BI Dashboard
+Page 1
+
+Executive Summary
+
+KPIs
+
+Accounts
+Exposure
+Default Rate
+Page 2
+
+Risk Monitoring
+
+DPD buckets
+Risk Segments
+Page 3
+
+Customer Analytics
+
+Age
+Income
+Geography
+Page 4
+
+Fraud Dashboard
+
+Fraud Trends
+Fraud Types
+Page 5
+
+Collections Dashboard
+
+Recovery
+Success Rate
+Page 6
+
+Forecast Dashboard
+
+Default Forecast
+Recovery Forecast
+Page 7
+
+ML Dashboard
+
+ROC Curve
+Feature Importance
+Default Probability
+Final Business Recommendations
+
+Your presentation should end with something like:
+
+Customers with utilization above 80% are significantly more likely to default.
+Fraud alerts strongly correlate with delinquency.
+Self-employed customers exhibit higher risk levels.
+Collection efforts are most effective within the first 30 DPD bucket.
+Portfolio default rates are forecasted to increase over the next six months.
+Introduce early-warning monitoring for high-risk accounts.
+
+This final section is what separates a dashboard developer from a Business Analyst. Most recruiters care less about the charts and more about whether you can translate data into decisions. For your target of moving from ₹16.5k/month toward analyst roles in the ₹8–12 LPA range, that's the part you should practice explaining confidently in interviews.
