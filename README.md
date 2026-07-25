@@ -60,9 +60,13 @@ Logistic Regression was chosen over more complex models specifically for its int
 ├── sql/                  # Schema, KPI queries, segmentation, fraud & collections analysis
 ├── notebooks/            # EDA, feature engineering, model training, forecasting
 ├── dashboard/            # Power BI file + page screenshots
-├── docs/                 # Business recommendations, data quality summary
+├── docs/                 # Business recommendations, data quality summary, data dictionary
 └── README.md
 ```
+
+## Data
+
+Raw data: 9 CSV files (~20,000 customer accounts, ~1,000,000 transaction records, synthetic dataset) loaded into PostgreSQL. Not included in this repo due to file size — full column-level documentation is available in [`docs/data_dictionary.md`](docs/data_dictionary.md), and the raw files are available on request.
 
 ## Business Recommendations
 
